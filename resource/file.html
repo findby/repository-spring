@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<!-- 	<form method="post" action="/upload" enctype="multipart/form-data">
+	    <input type="file" name="file"><br>
+	    <input type="submit" value="提交">
+	</form> -->
+	<input type="file" id="input_fileId" multiple><button id="file_button">提交</button>
+</body>
+<script type="text/javascript">
+	$("#file_button").on("click",function(){
+		debugger
+		var file=$("#input_fileId")[0].files[0];
+		var formData = new FormData();
+		formData.append("file",file);
+		$.ajax({
+			url:'/upload',
+			type:'post',
+            processData: false,
+            contentType: false,
+            data:formData,
+            success:function(){
+            }
+		});
+	});
+</script>
+</html>
