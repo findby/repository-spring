@@ -11,7 +11,7 @@
 
 2019-11-18  老实说，我是不是太闲了;活下来才有话说，知道才是真知道。
 
-Git push to upstream没有权限
+Git push to upstream没有权限  
 
 
 
