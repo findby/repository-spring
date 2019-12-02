@@ -1,5 +1,7 @@
 https://github.com/a466350665/smart/stargazers
 
+服务，http://localhost:8080/smart-sso-server/swagger-ui.html
+
 java 单点登录权限系统
 	数据库模型
 
