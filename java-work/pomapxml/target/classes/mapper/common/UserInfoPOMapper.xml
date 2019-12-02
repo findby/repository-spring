@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.mapper.UserInfoPOMapper">
+  <resultMap id="BaseResultMap" type="com.sys.pojo.UserInfoPO">
+    <id column="test_user_uid" jdbcType="INTEGER" property="testUserUid" />
+    <result column="test_user_uname" jdbcType="VARCHAR" property="testUserUname" />
+    <result column="test_user_pwd" jdbcType="VARCHAR" property="testUserPwd" />
+    <result column="LAST_LOGIN_TIME" jdbcType="DATE" property="lastLoginTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sys.pojo.UserInfoPO">
+    <result column="file" jdbcType="LONGVARBINARY" property="file" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    test_user_uid, test_user_uname, test_user_pwd, LAST_LOGIN_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    file
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.sys.pojo.UserInfoPOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from test_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.sys.pojo.UserInfoPOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from test_user
+    where test_user_uid = #{testUserUid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from test_user
+    where test_user_uid = #{testUserUid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sys.pojo.UserInfoPOExample">
+    delete from test_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sys.pojo.UserInfoPO">
+    insert into test_user (test_user_uid, test_user_uname, test_user_pwd, 
+      LAST_LOGIN_TIME, file)
+    values (#{testUserUid,jdbcType=INTEGER}, #{testUserUname,jdbcType=VARCHAR}, #{testUserPwd,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=DATE}, #{file,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sys.pojo.UserInfoPO">
+    insert into test_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testUserUid != null">
+        test_user_uid,
+      </if>
+      <if test="testUserUname != null">
+        test_user_uname,
+      </if>
+      <if test="testUserPwd != null">
+        test_user_pwd,
+      </if>
+      <if test="lastLoginTime != null">
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="file != null">
+        file,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testUserUid != null">
+        #{testUserUid,jdbcType=INTEGER},
+      </if>
+      <if test="testUserUname != null">
+        #{testUserUname,jdbcType=VARCHAR},
+      </if>
+      <if test="testUserPwd != null">
+        #{testUserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=DATE},
+      </if>
+      <if test="file != null">
+        #{file,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sys.pojo.UserInfoPOExample" resultType="java.lang.Long">
+    select count(*) from test_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update test_user
+    <set>
+      <if test="record.testUserUid != null">
+        test_user_uid = #{record.testUserUid,jdbcType=INTEGER},
+      </if>
+      <if test="record.testUserUname != null">
+        test_user_uname = #{record.testUserUname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testUserPwd != null">
+        test_user_pwd = #{record.testUserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginTime != null">
+        LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=DATE},
+      </if>
+      <if test="record.file != null">
+        file = #{record.file,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update test_user
+    set test_user_uid = #{record.testUserUid,jdbcType=INTEGER},
+      test_user_uname = #{record.testUserUname,jdbcType=VARCHAR},
+      test_user_pwd = #{record.testUserPwd,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=DATE},
+      file = #{record.file,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update test_user
+    set test_user_uid = #{record.testUserUid,jdbcType=INTEGER},
+      test_user_uname = #{record.testUserUname,jdbcType=VARCHAR},
+      test_user_pwd = #{record.testUserPwd,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.pojo.UserInfoPO">
+    update test_user
+    <set>
+      <if test="testUserUname != null">
+        test_user_uname = #{testUserUname,jdbcType=VARCHAR},
+      </if>
+      <if test="testUserPwd != null">
+        test_user_pwd = #{testUserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE},
+      </if>
+      <if test="file != null">
+        file = #{file,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where test_user_uid = #{testUserUid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sys.pojo.UserInfoPO">
+    update test_user
+    set test_user_uname = #{testUserUname,jdbcType=VARCHAR},
+      test_user_pwd = #{testUserPwd,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE},
+      file = #{file,jdbcType=LONGVARBINARY}
+    where test_user_uid = #{testUserUid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sys.pojo.UserInfoPO">
+    update test_user
+    set test_user_uname = #{testUserUname,jdbcType=VARCHAR},
+      test_user_pwd = #{testUserPwd,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE}
+    where test_user_uid = #{testUserUid,jdbcType=INTEGER}
+  </update>
+</mapper>
