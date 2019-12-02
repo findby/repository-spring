@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.mapper.UserModulePOMapper">
+	<!-- 数据库字段和pojo对应 -->
+	<resultMap id="BaseResultMap"
+		type="com.sys.pojo.UserModulePO">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="user_name" jdbcType="VARCHAR"
+			property="userName" />
+		<result column="password" jdbcType="VARCHAR"
+			property="password" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="age" jdbcType="INTEGER" property="age" />
+		<result column="sex" jdbcType="BIT" property="sex" />
+		<result column="birthday" jdbcType="DATE" property="birthday" />
+		<result column="created" jdbcType="TIMESTAMP"
+			property="created" />
+		<result column="updated" jdbcType="TIMESTAMP"
+			property="updated" />
+	</resultMap>
+	<!-- sql字段 -->
+	<sql id="Base_Column_List">
+		id, user_name, password, name, age, sex, birthday, created, updated
+	</sql>
+	<!-- 根据数据库主键查询用户信息 -->
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tb_user
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tb_user
+	</select>
+</mapper>
