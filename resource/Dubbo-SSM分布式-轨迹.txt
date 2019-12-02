@@ -1,5 +1,35 @@
 https://github.com/a466350665/smart/stargazers
 
+java 单点登录权限系统
+	数据库模型
+
+用户：ID(主键)、登录名、密码(加密)、最后登录IP、最后登录时间、登录总次数、创建时间、是否启用
+用户角色：ID(主键)、用户ID(外键)、角色ID(外键)
+角色：ID(主键)、名称、排序、描述、是否启用
+角色权限：ID(主键)、角色ID()、权限ID()、应用ID()
+应用：ID()、名称、排序、创建时间、是否启用、编码
+权限：ID()、应用ID、父ID、图标、名称、权限URL、排序、是否菜单、是否启用
+
+server 端口：8080
+客户端 端口：8082
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 2019-10-30 {事情的自我肯定}：秦顶涛，对不起，今天记住我的耻辱。
 	[预期]公司 做的项目有意义---我自己的[找工作]计划，也得严格自己执行
@@ -12,7 +42,28 @@ https://github.com/a466350665/smart/stargazers
 
 2019-11-13  奋斗的年纪、捧着饭碗		Kafka
 
-2019-11-18  老实说，我是不是太闲了;活下来才有话说，知道才是真知道。
+
+
+redis的数据类型
+	String
+	hash：value存放的是结构化的对象，例如单点：以cookieId作为key
+	list
+	set:：堆放的是一堆不重复值的集合
+	sorted set：比set多了一个权重参数score
+
+create procedure proc_name
+drop procedure proc_name
+
+
+
+
+
+
+
+
+
+
+
 
 Git push to upstream没有权限  
 
