@@ -1,3 +1,11 @@
+抱怨的男的没本事；男的，要本事。
+
+create procedure proc_name
+drop procedure proc_name
+
+数据库 SQL 语言层面的代码封装与重用。
+
+
 https://github.com/a466350665/smart/stargazers
 
 服务，http://localhost:8080/smart-sso-server/swagger-ui.html
@@ -53,8 +61,6 @@ redis的数据类型
 	set:：堆放的是一堆不重复值的集合
 	sorted set：比set多了一个权重参数score
 
-create procedure proc_name
-drop procedure proc_name
 
 
 
