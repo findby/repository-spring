@@ -1,6 +1,6 @@
 package org.apache.dubbo.demo.provider;
 
-
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Provider {
 
