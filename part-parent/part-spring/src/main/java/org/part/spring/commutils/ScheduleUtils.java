@@ -1,5 +1,13 @@
 package org.part.spring.commutils;
 
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+
 /***
  * @author	wenxiang.fei
  * @Description	简单定时报批工具类
