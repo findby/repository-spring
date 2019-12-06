@@ -6,12 +6,22 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>dubbo-demo-provider</artifactId>
+  <properties>
+  		<quartz-scheduler-version>2.2.3</quartz-scheduler-version>
+  </properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.focus.spring</groupId>
 			<artifactId>dubbo-demo-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- quartz -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz-scheduler-version}</version>
+		</dependency>
+		<!-- quartz end-->
 		<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>

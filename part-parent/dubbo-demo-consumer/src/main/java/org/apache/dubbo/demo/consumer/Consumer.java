@@ -10,8 +10,9 @@ public class Consumer {
         // Obtaining a remote service proxy
         DemoService demoService = (DemoService)context.getBean("demoService");
         // Executing remote methods
-        String hello = demoService.sayHello("world");
+        //String hello = demoService.sayHello("world");
+        demoService.showTime();
         // Display the call result
-        System.out.println(hello);
+        //System.out.println(hello);
     }
 }

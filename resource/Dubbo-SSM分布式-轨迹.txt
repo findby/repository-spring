@@ -6,6 +6,16 @@ drop procedure proc_name
 数据库 SQL 语言层面的代码封装与重用。
 
 
+
+
+
+
+
+
+https://www.bccn.net/  {编程中国}
+泛型类型在逻辑上看以看成是多个不同的类型，实际上都是相同的基本类型。
+
+{单点登录}
 https://github.com/a466350665/smart/stargazers
 
 服务，http://localhost:8080/smart-sso-server/swagger-ui.html
@@ -22,6 +32,15 @@ java 单点登录权限系统
 
 server 端口：8080
 客户端 端口：8082
+
+{DateUtils}
+12-6 补充，时间戳-日期格式
+
+dubbo 初识别---SOA(分布式架构)
+	用spring管理，注册中心zookeeper
+	pom.xml 引入dependency根据以上思路
+
+
 
 
 

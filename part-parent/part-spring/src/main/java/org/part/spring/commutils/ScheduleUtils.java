@@ -1,33 +1,13 @@
-package org.apache.dubbo.demo.provider;
+package org.part.spring.commutils;
 
-import org.apache.dubbo.demo.DemoService;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.SimpleScheduleBuilder;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
-import org.springframework.stereotype.Service;
-
-@Service
-public class DemoServiceImpl implements DemoService{
-
-	public String sayHello(String name) {
-		return "hello "+ name;
-	}
-
-	public void showTime() {
-		lineTime();
-	}
-
-
-	/***
-	 * 
-	 * @param clazz 业务操作类的.class
-	 * @param intervalSeconds 定时任务间隔的秒钟
-	 */
-	private void lineTime(Class<T> clazz,Integer intervalSeconds) {
+/***
+ * @author	wenxiang.fei
+ * @Description	简单定时报批工具类
+ * @time	2019-12-06 16:18:59
+ */
+public class ScheduleUtils {
+	
+	public static void execute(Class<?> clazz,Integer intervalSeconds) {
         try{
             //创建scheduler，执行计划
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -52,5 +32,4 @@ public class DemoServiceImpl implements DemoService{
            ex.printStackTrace();
        }
 	}
-
 }
